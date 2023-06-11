@@ -1,0 +1,12 @@
+body {
+	background-color: #1e2024;
+	max-width: 1024px;
+	padding: 20px 30px;
+	margin: 0 auto;
+	color: #fff;
+}
+
+img	{
+	display: block;
+	margin: 0 auto;
+}

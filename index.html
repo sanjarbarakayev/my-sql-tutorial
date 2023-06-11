@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My SQL</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<h1>MySQL ma'lumotlar bazasini yaratish asoslari. Ma'lumotlar bazasini yaratish: texnikalar va mavjud echimlar</h1>
+
+	<p>Shunday qilib, siz MySQL-ni o'rnatdingiz va biz SQL tilini o'rganishni boshlaymiz. Ma'lumotlar bazasi asoslari
+		bo'yicha 3-darsda biz forum uchun kichik ma'lumotlar bazasining kontseptual modelini yaratdik. MySQL ma'lumotlar
+		bazasida buni amalga oshirish vaqti keldi.</p>
+
+	<p>Buning uchun avval MySQL serverini ishga tushirishingiz kerak. Boshlash menyusiga o'ting - Dasturlar - MySQL -
+		MySQL Server 5.1 - MySQL Buyruqlar qatori mijozi. Parolni kiritishingizni so'raydigan oyna ochiladi.</p>
+
+	<p>Agar siz serverni sozlashda parolni ko'rsatmagan bo'lsangiz yoki parolni kiritmagan bo'lsangiz, klaviaturada
+		Enter ni bosing. Mysql\u003e tezlikni kutish.</p>
+
+	<img src="images/01.gif" alt="">
+
+	<p>
+		Biz forum deb nomlanadigan ma'lumotlar bazasini yaratishimiz kerak. Buning uchun SQL-da bayonot mavjud.
+		ma'lumotlar bazasini yaratish uchun quyidagi buyruqni ishga tushiring:
+	</p>
+
+	<p>
+		CREATE DATABASE yaratish_name;
+	</p>
+
+	<p>
+		Ma'lumotlar bazasi nomining maksimal uzunligi 64 belgidan iborat bo'lishi mumkin, ular harflar, raqamlar, "_"
+		belgisi va "$" belgisini o'z ichiga olishi mumkin. Ism raqam bilan boshlanishi mumkin, ammo to'liq raqamlardan
+		iborat bo'lmasligi kerak. Ma'lumotlar bazasiga har qanday so'rov nuqta-vergul bilan tugaydi (bu belgi ajratuvchi
+		- ajratuvchi deb nomlanadi). So'rovni olgandan so'ng, server uni bajaradi va muvaffaqiyatli bo'lsa, "Savol OK
+		..." xabarini namoyish etadi.
+		Shunday qilib, forum ma'lumotlar bazasini yarating:
+	</p>
+
+	<img src="images/02.gif" alt="">
+
+	<p>
+		Enter ni bosing va "Savol OK ..." javobini ko'ring, bu ma'lumotlar bazasi yaratilganligini anglatadi:
+	</p>
+
+	<img src="images/03.gif" alt="">
+
+	<p>
+		Juda oddiy. Endi ushbu ma'lumotlar bazasida biz 3 jadvalni yaratishimiz kerak: mavzular, foydalanuvchilar va
+		xabarlar. Ammo buni amalga oshirishdan oldin serverga qaysi jadvalni yaratayotganimizni aytishimiz kerak, ya'ni.
+		Ishlash uchun ma'lumotlar bazasini tanlash kerak. Buning uchun operatordan foydalaning foydalanish. Baza
+		ishlashi uchun sintaksis quyidagicha:
+	</p>
+
+	<p>Database_name-dan foydalaning;</p>
+
+	<p>
+		Shunday qilib, keling, ishlash uchun ma'lumotlar bazamiz forumini tanlaymiz:
+	</p>
+
+	<img src="images/04.gif" alt="">
+
+	<p>
+		Enter ni bosing va "Ma'lumotlar bazasi o'zgartirildi" javobini ko'ring - ma'lumotlar bazasi tanlangan.
+	</p>
+
+	<img src="images/05.gif" alt="">
+	
+	<p>
+		MySQL bilan har seansda ma'lumotlar bazasini tanlash kerak.
+	</p>
+
+	<p>
+		SQL-da jadvallar yaratish uchun bayonot mavjud jadval yaratish. Ma'lumotlar bazasini yaratish quyidagi sintaksisga ega:
+	</p>
+
+	<p>
+		Jadval_name nomini yaratish (birinchi_column_name turi, ikkinchi_column_name turi, ..., last_column_name turi);
+	</p>
+
+	<p>
+		Jadval va ustun nomlariga qo'yiladigan talablar ma'lumotlar bazasi nomlari bilan bir xil. Har bir ustun ma'lum bir ma'lumot turi bilan bog'liq bo'lib, u ustunda saqlanishi mumkin bo'lgan ma'lumotlarning xususiyatini cheklaydi (masalan, raqamlar maydoniga harflarning kirib borishini oldini oladi). MySQL ma'lumotlarning bir nechta turlarini qo'llab-quvvatlaydi: raqamli, satr, taqvim va NULLning maxsus turi, bu ma'lumot yo'qligini bildiradi. Keyingi darsda ma'lumotlar turlari haqida batafsil gaplashamiz, ammo hozircha jadvalimizga qaytamiz. Ularda bizda faqat ikkita ma'lumotlar turi mavjud - butun sonlar (int) va satrlar (matn). Shunday qilib, birinchi jadvalni tuzing - Mavzular:
+	</p>
+
+	<img src="images/06.gif" alt="">
+
+	<p>
+		Enter ni bosing - jadval yaratildi:
+	</p>
+
+	<img src="images/07.gif" alt="">
+
+	<p>
+		Shunday qilib, biz uchta ustunli mavzular jadvalini yaratdik:
+	</p>
+
+	<ul>
+		<li>
+			Mavzuning id_topic int - identifikatori (butun son)
+		</li>
+		<li>
+			topic_name matn - mavzu nomi (satr),
+		</li>
+		<li>
+			id_author int - muallif (integer qiymati).
+		</li>
+	</ul>
+	
+	<p>
+		Xuddi shu tarzda, qolgan ikkita jadvalni yaratamiz - foydalanuvchilar (foydalanuvchilar) va xabarlar (xabarlar):
+	</p>
+
+	<img src="images/08.gif" alt="">
+
+	<p>
+		Shunday qilib, biz forum ma'lumotlar bazasini yaratdik va unda uchta jadval mavjud. Endi biz buni eslaymiz, lekin agar bizning ma'lumotlar bazamiz juda katta bo'lsa, unda barcha jadvallar va ustunlarning nomlarini yodda tutish shunchaki mumkin emas. Shuning uchun, bizda qaysi ma'lumotlar bazasi bor, qaysi jadvallar mavjud va qaysi jadvallar o'z ichiga olganligini ko'rishingiz kerak. Buning uchun SQL-da bir nechta iboralar mavjud:
+	</p>
+
+	<ul>
+		<li>
+			ma'lumotlar bazalarini ko'rsatish  - mavjud bo'lgan barcha ma'lumotlar bazalarini ko'rsatish,
+		</li>
+		<li>
+			jadvallarni ko'rsatish  - joriy ma'lumotlar bazasining jadvallari ro'yxatini ko'rsatish (avval uni operator yordamida tanlashingiz kerak) foydalanish),
+		</li>
+		<li>
+			table_name-ni ta'riflang  - ko'rsatilgan jadval ustunlarining tavsifini ko'rsatish.
+		</li>
+	</ul>
+
+	<p>
+		Keling urinib koramiz. Bizda mavjud bo'lgan barcha ma'lumotlar bazalarini ko'rib chiqamiz (sizda bitta forum bor, menda 30 ta va ularning hammasi ustunda keltirilgan):
+	</p>
+
+	<img src="images/09.gif" alt="">
+
+	<p>
+		Endi forum ma'lumotlar bazasi jadvallari ro'yxatini ko'rib chiqamiz (buning uchun avval uni tanlashimiz kerak), har bir so'rovdan keyin Enter tugmasini bosishni unutmang:
+	</p>
+
+	<img src="images/10.gif" alt="">
+
+	<p>
+		Javobda biz uchta jadvalimizning nomlarini ko'ramiz. Endi ustunlarning tavsifini ko'rib chiqaylik, masalan, mavzular jadvali:
+	</p>
+
+	<img src="images/11.gif" alt="">
+
+	<p>
+		Dastlabki ikkita ustun bizga tanish - bu ism va ma'lumotlar turi, qolganlarini biz hali aniqlab olishimiz kerak. Birinchidan, biz hali ham ma'lumotlarning turlari, qaysi va qachon ishlatilishi kerakligini aniqlaymiz. Bugun biz so'nggi bayonotni ko'rib chiqamiz - tomchi, jadvallar va ma'lumotlar bazalarini o'chirishga imkon beradi. Masalan, mavzular jadvalini o'chirib tashlaymiz. Biz forum forumini ikki qadam orqaga tanlaganimiz sababli, uni hozir tanlashning hojati yo'q, siz shunchaki yozishingiz mumkin:
+	</p>
+
+	<code>
+		Jadval jadvalini o'chirish_name;
+	</code>
+
+	<p>
+		va Enter ni bosing. 
+	</p>
+
+	<img src="images/12.gif" alt="">
+
+	<p>
+		Endi bazamizdagi jadvallar ro'yxatiga qarang:
+	</p>
+
+	<img src="images/13.gif" alt="">
+
+	<p>
+		Bizning jadvalimiz haqiqatan ham o'chirildi. Endi forum ma'lumotlar bazasini o'zi o'chirib tashlaymiz (o'chiring, pushaymon bo'lmang, siz uni yana o'zgartirishingiz kerak). Buning uchun biz quyidagini yozamiz:
+	</p>
+
+	<code>
+		Ma'lumotlar bazasini tashla_name;
+	</code>
+
+	<p>
+		Ma'lumotlar bazasini tashla_name;
+	</p>
+
+	<img src="images/14.gif" alt="">
+
+	<p>
+		Va mavjud bo'lgan barcha ma'lumotlar bazalariga so'rov yuborib, bunga ishonch hosil qiling:
+	</p>
+
+	<img src="images/15.gif" alt="">
+
+	<p>
+		Ehtimol sizda bitta ma'lumotlar bazasi yo'q, menda 30tadan 29tasi bor.
+	</p>
+
+	<p>
+		Hozir hammasi shu. Ma'lumotlar bazalari va jadvallarni qanday yaratishni, ularni yo'q qilishni va mavjud ma'lumotlar bazalari, jadvallar va ularning tavsiflari haqida ma'lumot olishni o'rgandik.
+	</p>
+
+	<p>
+		Ma'lumotlar bazasini yarating.  MySQL buyruq satriga CREATE DATABASE kiriting ; . Almashtiring   Ma'lumotlar bazangiz nomi. U bo'shliqlarni o'z ichiga olmaydi.
+	</p>
+
+	<ul>
+		<li>
+			Masalan, AQShning barcha shtatlari ma'lumotlar bazasini yaratish uchun CREATE DATABASE us_states-ga kirishingiz mumkin;
+		</li>
+		<li>
+			Izoh: Buyruqlar ixtiyoriy ravishda katta harflar bilan.
+		</li>
+		<li>
+			Izoh: Barcha MySQL buyruqlari ";" bilan tugashi kerak. Agar nuqta-vergul qo'yishni unutgan bo'lsangiz, shunchaki ";" kiriting. oldingi buyruqni qayta ishlashni boshlash uchun keyingi qatorda.
+		</li>
+	</ul>
+
+	<p>
+		Mavjud ma'lumotlar bazalari ro'yxatini ko'rsatish.  SHOW DATABASES buyrug'ini kiriting; saqlangan ma'lumotlar bazalarining ro'yxatini ko'rsatish uchun. Yangi yaratilgan ma'lumotlar bazasiga qo'shimcha ravishda siz mysql va test ma'lumotlar bazalarini ko'rasiz. Endi siz ularni e'tiborsiz qoldirishingiz mumkin.
+	</p>
+
+	<p>
+		Ma'lumotlar bazasini tanlang.  Ma'lumotlar bazasi yaratilganda tahrirlashni boshlash uchun uni tanlashingiz kerak. USE us_states buyrug'ini kiriting; . Ma'lumotlar bazasi o'zgarganligi haqidagi xabarni ko'rasiz, us_states hozir faol ma'lumotlar bazasi.
+	</p>
+
+	<p>
+		Jadval yarating.  Jadval bu ma'lumotlar bazasida ma'lumotlarni saqlash joyidir. Jadvalni yaratish uchun uning buyrug'ini bitta buyruq bilan kiritish kerak. Jadvalni yaratish uchun quyidagi buyruqni kiriting: TABLE holatini yarating (ID INTULMAS NULL PRIMARY KEY AUTO_INCREMENT, davlat CHAR (25), pop INT (9)); . Ushbu buyruq "maydonlar" deb nomlangan jadval yaratadi, uchta maydon: id, holat va populyatsiya.
+	</p>
+
+	<ul>
+		<li>
+			INT buyrug'i id maydonida faqat sonlar (butun sonlar) bo'lishi kerakligini bildiradi.
+		</li>
+		<li>
+			NOT NULL buyrug'i id maydoni bo'sh bo'lmasligi kerakligini bildiradi (kiritish uchun zarur).
+		</li>
+		<li>
+			PRIMARY KEY degani id maydoni jadvaldagi kalit maydon ekanligini anglatadi. Kalit maydoni bir xil qiymatlarni o'z ichiga olmaydigan maydondir.
+		</li>
+		<li>
+			AUTO_INCREMENT buyrug'i avtomatik ravishda id maydoniga qo'shimcha qiymatlarni tayinlaydi va har bir yozuvni avtomatik ravishda raqamlaydi.
+		</li>
+		<li>
+			CHAR (belgilar) va INT (butun son) buyruqlari tegishli maydonlarda ruxsat berilgan ma'lumotlar turini ko'rsatadi. Buyruqdan keyingi raqam maydonda nechta belgi yoki raqam bo'lishi mumkinligini ko'rsatadi.
+		</li>
+	</ul>
+
+	<p>
+		Jadvalda yozuv yarating.  Endi jadval tuzildi, endi ma'lumotni kiritish vaqti keldi. Birinchi yozuvni kiritish uchun quyidagi buyruqdan foydalaning: INSERT INTO holatlari (id, shtat, populyatsiya) VALUES (NULL, 'Alabama', '4822023');
+	</p>
+
+	<ul>
+		<li>
+			Ushbu buyruq, aslida, ma'lumotlar bazasiga uchta ma'lumotni jadvalda saqlashni buyuradi.
+		</li>
+		<li>
+			Id maydoni NULL identifikatorini o'z ichiga olganligi sababli, NULL ni qiymat sifatida kiritish AUTO_INCREMENT identifikatori tufayli bittaga ko'payishiga olib keladi.
+		</li>
+	</ul>
+
+	<p>
+		Ko'proq yozuvlarni yarating.  Bitta buyruq bilan siz ko'plab yozuvlarni saqlashingiz mumkin. Yana uchta holatni saqlash uchun quyidagi buyruqni kiriting: INSERT INTO shtatlari (id, shtat, aholi) VALUES (NULL, 'Alaska', '731449'), (NULL, 'Arizona', '6553255'), (NULL, 'Arkansas ',' 2949131 '); .
+	</p>
+
+	<p>
+		Ma'lumotlar bazasi so'rovini to'ldiring.  Endi oddiy ma'lumotlar bazasi yaratildi, siz kerakli ma'lumotlarni olish uchun so'rovlarni bajarishingiz mumkin. Boshlash uchun quyidagi buyruqni kiriting: SELECT * FROM us_states; . Ushbu so'rov "hamma" degan ma'noni anglatuvchi "*" buyrug'i bilan ko'rsatilgandek ma'lumotlar bazasini qaytaradi.
+	</p>
+
+	<p>
+		Keyinchalik qiyin bo'lgan so'rov uchun quyidagi buyruqni kiriting: SELECT holati, FROM us_states populyatsiyasi ORDER BY; Ushbu so'rov alifbo tartibida nom bo'yicha tartiblash o'rniga, aholi soni bo'yicha tartiblangan jadvallarni keltiradi. Id maydoni ko'rsatilmaydi, chunki siz faqat shtat va aholi maydonlarini so'ragansiz.
+	</p>
+
+	<p>
+		Shtatlar populyatsiyasini teskari tartibda aks ettirish uchun quyidagi buyruqdan foydalaning: TANLASH holati, FROM bizdan_ aholisi ORDER BY populyatsiya DESC; . DESC guruhi shtatlar populyatsiyasining kamayish tartibida namoyish etadi (kattadan kichikgacha, lekin kichikdan kattagacha).
+	</p>
+</body>
+
+</html>
